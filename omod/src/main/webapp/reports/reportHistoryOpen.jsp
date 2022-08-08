@@ -98,10 +98,12 @@
 						<legend><b><spring:message code="reporting.reportRequest.parameters"/></b></legend>
 						<table class="requestTable">
 							<c:forEach var="p" items="${reportDefinition.parameters}">
-								<tr>
-									<td>${p.label}: </td>
-									<td><rpt:format object="${request.reportDefinition.parameterMappings[p.name]}"/></td>
-								</tr>
+							 <c:if test ="${!p.name.equals('startDateGC') && !p.name.equals('endDateGC')}">
+									<tr>
+										<td>${p.label}: </td>
+										<td><rpt:format object="${request.reportDefinition.parameterMappings[p.name]}"/></td>
+									</tr>
+								</c:if>
 							</c:forEach>
 							<tr>
 								<td><spring:message code="reporting.reportRequest.baseCohort"/>:</td>

@@ -54,7 +54,9 @@ function toggleInputElements( idPrefix ){
 											</script>
 							                <tr>
 							                    <spring:bind path="userEnteredParams[${parameter.name}]">
+							                       <c:if test ="${!parameter.name.equals('startDateGC') && !parameter.name.equals('endDateGC')}">
 										            <td><spring:message code="${parameter.label}"/>:</td>
+										            </c:if>
 								                    <td>
 						                   				<c:choose>
 															<c:when test="${parameter.collectionType != null}">

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import javax.activation.DataHandler;
+//import javax.activation.DataHandler;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.Multipart;
@@ -125,7 +125,7 @@ public class EmailReportProcessor implements ReportProcessor {
 				if (report.getOutputContentType().contains("text")) {
 					output = new String(report.getRenderedOutput(), "UTF-8");
 				}
-				attachment.setDataHandler(new DataHandler(output, report.getOutputContentType()));
+				//attachment.setDataHandler(new DataHandler(output, report.getOutputContentType()));
 				attachment.setFileName(configuration.getProperty("attachmentName"));
 				multipart.addBodyPart(attachment);
 			}

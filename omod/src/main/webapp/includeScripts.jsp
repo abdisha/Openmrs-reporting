@@ -7,13 +7,20 @@
 <openmrs:htmlInclude file="${pageContext.request.contextPath}/moduleResources/reporting/scripts/jquery/dataTables/css/table.css"/>
 <openmrs:htmlInclude file="${pageContext.request.contextPath}/moduleResources/reporting/scripts/jquery/dataTables/css/custom.css"/>
 <openmrs:htmlInclude file="${pageContext.request.contextPath}/moduleResources/reporting/css/reporting.css"/>
-
 <!-- Include javascript from core. Not needed on most pages unless they don't include the header -->
 <openmrs:htmlInclude file="/scripts/jquery/jquery.min.js" />
 <openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery-ui.custom.min.js" />
 <openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery-ui-timepicker-addon.js" />
 <openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery-ui-datepicker-i18n.js" />
 <openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery-ui-timepicker-i18n.js" />
+<openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery.calendars.js" />
+<openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery.calendars.plus.js" />
+<openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery.plugin.js" />
+<openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery.calendars.picker.js" />
+<openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery.calendars.ethiopian.js" />
+<openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery.calendars.ethiopian-am.js" />
+<openmrs:htmlInclude file="/scripts/jquery-ui/css/jquery.calendars.picker.css" />
+
 
 <!-- Include javascript from reporting module -->
 <openmrs:htmlInclude file="${pageContext.request.contextPath}/moduleResources/reporting/scripts/jquery/dataTables/jquery.dataTables.min.js"/>

@@ -15,10 +15,12 @@
 					<c:forEach items="${__openmrs_report_data.definition.parameters}" var="p" varStatus="paramStatus">
 						<c:set var="paramVal" value="${__openmrs_report_data.context.parameterValues[p.name]}"/>
 						<c:if test="${!empty paramVal}">
+						 <c:if test ="${!p.name.equals('startDateGC') && !p.name.equals('endDateGC')}">
 							<tr>
 								<th align="left"><spring:message code="${p.label}"/>:</th>
 								<td><rpt:format object="${paramVal}"/></td>
 							</tr>
+						</c:if>
 						</c:if>
 					</c:forEach>
 				</table>

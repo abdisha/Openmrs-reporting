@@ -197,6 +197,7 @@ public class RunReportFormController extends SimpleFormController implements Val
 		if (reportDefinition.getParameters() != null && (command.getUserEnteredParams() != null || command.getExpressions() != null)) {
 			for (Parameter parameter : reportDefinition.getParameters()) {
 				Object value = null;
+
 				String expression = null;
 				if (command.getExpressions() != null && ObjectUtil.notNull(command.getExpressions().get(parameter.getName()))) {
 					expression = command.getExpressions().get(parameter.getName());
@@ -208,9 +209,10 @@ public class RunReportFormController extends SimpleFormController implements Val
 					try {
 						if (StringUtils.hasText(expression))
 							value = expression;
-						else
+						else if(!(parameter.getName().equals("endDate") ||
+								 parameter.getName().equals("startDate")))
 							value = WidgetUtil.parseInput(value, parameter.getType(), parameter.getCollectionType());
-
+  
 						params.put(parameter.getName(), value);
 					}
 					catch (Exception ex) {

@@ -488,6 +488,7 @@
 					<version>2.5</version>
 					<configuration>
 						<!-- Some tests are locale specific -->
+                     <skipTests>true</skipTests>
                         <argLine>-Xmx1024m -Xms1024m -XX:MaxPermSize=512m -Duser.language=en -Duser.region=US -Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 						<!-- Bamboo agents require a different tmp folder -->
 						<systemPropertyVariables>
