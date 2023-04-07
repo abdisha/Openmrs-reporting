@@ -16,19 +16,23 @@
 	});
 </script>
 
-<table id="${model.portletUUID}ReportTable" style="width:100%;" class="reporting-data-table display">
-	<thead style="display:none;">
-		<tr><th></th></tr>
-	</thead>
-	<tbody>
-		<c:forEach items="${model.definitionSummaries}" var="r">
-			<tr>
-				<td>
-					<a href="${pageContext.request.contextPath}/module/reporting/run/runReport.form?reportId=${r.uuid}">
-						<c:out value="${r.name}" />
-					</a>
-				</td>
-			</tr>
-		</c:forEach>
-	</tbody>
-</table>
+<c:forEach items="${model.definitionGroupSummaryies}" var="dg">
+	<h3><c:out value="dg.groupName"/></h3>
+	<table id="${model.portletUUID}ReportTable" style="width:100%;" class="reporting-data-table display">
+		<thead style="display:none;">
+			<tr><th></th></tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${model.dg.definitionSummaries}" var="r">
+				<tr>
+					<td>
+						<p><c:out value="${r.reportGroup}"/></p>
+						<a href="${pageContext.request.contextPath}/module/reporting/run/runReport.form?reportId=${r.uuid}">
+							<c:out value="${r.name}" />
+						</a>
+					</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</c:forEach>

@@ -33,7 +33,8 @@ public class RenderReportFormController {
 	
     @RequestMapping("/module/reporting/reports/renderDefaultReport.form")
 	public ModelAndView renderDefaultReport() {
-    	return new ModelAndView("/module/reporting/reports/renderDefaultReport");    	
+    //	return new ModelAndView("/module/reporting/reports/renderDefaultReport");    	
+    	return new ModelAndView("/module/reporting/reports/renderEthiohriReport");    	
     }
 
 }

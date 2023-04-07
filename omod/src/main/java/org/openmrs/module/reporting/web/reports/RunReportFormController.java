@@ -68,6 +68,7 @@ public class RunReportFormController extends SimpleFormController implements Val
 	 */
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
 		super.initBinder(request, binder);
+		
 		binder.registerCustomEditor(Mapped.class, new MappedEditor());
 	}
 	

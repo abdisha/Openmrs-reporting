@@ -9,6 +9,8 @@
  */
 package org.openmrs.module.reporting.definition;
 
+import java.util.Set;
+
 import org.openmrs.OpenmrsMetadata;
 import org.openmrs.api.db.SerializedObject;
 
@@ -21,6 +23,7 @@ public class DefinitionSummary {
 	private String name;
 	private String description;
 	private String type;
+    private String reportGroup;
 	
 	public DefinitionSummary() {
 	}
@@ -30,6 +33,11 @@ public class DefinitionSummary {
     	this.name = so.getName();
     	this.description = so.getDescription();
     	this.type = so.getSubtype();
+        if(this.type.equals("DatimReports"))
+        {
+         this.reportGroup = "DatimReport";
+        }
+        System.out.println(type);
     }
 	
     public DefinitionSummary(OpenmrsMetadata metadata) {

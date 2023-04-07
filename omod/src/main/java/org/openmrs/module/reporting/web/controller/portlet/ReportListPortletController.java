@@ -9,6 +9,7 @@
  */
 package org.openmrs.module.reporting.web.controller.portlet;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,15 +17,37 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.openmrs.api.context.Context;
 import org.openmrs.module.reporting.definition.DefinitionSummary;
+import org.openmrs.module.reporting.definition.DefinitionSummaryGroup;
 import org.openmrs.module.reporting.report.definition.service.ReportDefinitionService;
 
 public class ReportListPortletController extends ReportingPortletController {
-	
+
 	@Override
 	protected void populateModel(HttpServletRequest request, Map<String, Object> model) {
 		super.populateModel(request, model);
-		List<DefinitionSummary> definitionSummaries = Context.getService(ReportDefinitionService.class).getAllDefinitionSummaries(false);
-		model.put("definitionSummaries", definitionSummaries);
+		List<DefinitionSummary> definitionSummaries = Context.getService(ReportDefinitionService.class)
+				.getAllDefinitionSummaries(false);
+		List<DefinitionSummaryGroup> definitionSummaryGroups = new ArrayList<DefinitionSummaryGroup>();
+		DefinitionSummaryGroup group;
+		boolean foundGroup = false;
+		for (DefinitionSummary definitionSummary : definitionSummaries) {
+			for (DefinitionSummaryGroup definitionSummaryGroup : definitionSummaryGroups) {
+				if (definitionSummaryGroup.getGroupName().contains(definitionSummary.getName().split("-")[0])) {
+					foundGroup = true;
+					definitionSummaryGroup.UpdateDefinitionSummary(definitionSummary);
+					continue;
+				}
+
+			}
+			if (!foundGroup) {
+				group = new DefinitionSummaryGroup(definitionSummary.getName().split("-")[0]);
+				group.UpdateDefinitionSummary(definitionSummary);
+				definitionSummaryGroups.add(group);
+			}
+
+			foundGroup =false;
+		}
+		model.put("definitionSummaries", definitionSummaryGroups);
 	}
 
 }

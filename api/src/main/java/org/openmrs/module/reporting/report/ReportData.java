@@ -9,6 +9,7 @@
  */
 package org.openmrs.module.reporting.report;
 
+import org.jfree.data.general.Dataset;
 import org.openmrs.module.reporting.dataset.DataSet;
 import org.openmrs.module.reporting.evaluation.Evaluated;
 import org.openmrs.module.reporting.evaluation.EvaluationContext;
