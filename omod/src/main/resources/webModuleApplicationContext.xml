@@ -41,6 +41,7 @@
             	<prop key="**/runReport.portlet">runReportPortletController</prop>
             	<prop key="**/reportRequests.portlet">reportRequestPortletController</prop>
             	<prop key="**/reportList.portlet">reportListPortletController</prop>
+            	<prop key="**/reportListManger.portlet">reportListManagerPortletController</prop>
 				<prop key="module/reporting/run/runReport.list">runReportList</prop>
 				<prop key="module/reporting/run/runReport.form">runReportForm</prop>
 			</props>
@@ -63,6 +64,7 @@
 	<bean id="runReportPortletController" class="org.openmrs.module.reporting.web.controller.portlet.RunReportPortletController" />
 	<bean id="reportRequestPortletController" class="org.openmrs.module.reporting.web.reports.ReportRequestPortletController" />
 	<bean id="reportListPortletController" class="org.openmrs.module.reporting.web.controller.portlet.ReportListPortletController" />
+	<bean id="reportListManagerPortletController" class="org.openmrs.module.reporting.web.controller.portlet.ReportListManagerPortletController" />
 
 	<bean id="runReportList" class="org.openmrs.module.reporting.web.reports.RunReportListController">
         <property name="commandName"><value>reports</value></property>

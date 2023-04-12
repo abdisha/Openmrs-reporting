@@ -21,6 +21,7 @@ public class DashboardController {
 
 	@RequestMapping("/module/reporting/dashboard/index.form")
 	public void showDashboard() {
+		
 	}
 	
 }

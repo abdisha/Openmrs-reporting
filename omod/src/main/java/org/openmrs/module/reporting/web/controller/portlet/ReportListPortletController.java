@@ -25,11 +25,16 @@ public class ReportListPortletController extends ReportingPortletController {
 	@Override
 	protected void populateModel(HttpServletRequest request, Map<String, Object> model) {
 		super.populateModel(request, model);
+		String[] reportName;
+		List<String> reportGroups = new ArrayList<String>();
 		List<DefinitionSummary> definitionSummaries = Context.getService(ReportDefinitionService.class)
 				.getAllDefinitionSummaries(false);
+
 		List<DefinitionSummaryGroup> definitionSummaryGroups = new ArrayList<DefinitionSummaryGroup>();
 		DefinitionSummaryGroup group;
 		boolean foundGroup = false;
+		
+		
 		for (DefinitionSummary definitionSummary : definitionSummaries) {
 			for (DefinitionSummaryGroup definitionSummaryGroup : definitionSummaryGroups) {
 				if (definitionSummaryGroup.getGroupName().contains(definitionSummary.getName().split("-")[0])) {
@@ -39,15 +44,23 @@ public class ReportListPortletController extends ReportingPortletController {
 				}
 
 			}
+
 			if (!foundGroup) {
 				group = new DefinitionSummaryGroup(definitionSummary.getName().split("-")[0]);
 				group.UpdateDefinitionSummary(definitionSummary);
 				definitionSummaryGroups.add(group);
 			}
+			reportName=definitionSummary.getName().split("-");
 
+			definitionSummary.setName(reportName.length>1?reportName[1]:reportName[0]);
 			foundGroup =false;
 		}
-		model.put("definitionSummaries", definitionSummaryGroups);
+
+		for (DefinitionSummaryGroup definitionSummaryGroup : definitionSummaryGroups) {
+			reportGroups.add(definitionSummaryGroup.getGroupName());
+			model.put(definitionSummaryGroup.getGroupName(), definitionSummaryGroup.getDefinitionSummaries());
+		}
+		model.put("reportGroups", reportGroups);
 	}
 
 }

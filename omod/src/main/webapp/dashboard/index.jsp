@@ -23,7 +23,7 @@
 							<legend>
 								<b><spring:message code="reporting.availableReports"/></b>
 							</legend>
-							<openmrs:portlet url="reportList" moduleId="reporting" parameters="numOnPage=15"/>
+							<openmrs:portlet url="reportList" moduleId="reporting" />
 						</fieldset>
 					</div>
 					<br/>

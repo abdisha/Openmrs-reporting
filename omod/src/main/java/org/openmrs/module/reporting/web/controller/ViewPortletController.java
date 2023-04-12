@@ -40,6 +40,7 @@ public class ViewPortletController {
             "reportDesignForm",
             "reportHistory",
             "reportList",
+            "reportListManager",
             "reportProcessorForm",
             "reportRequests",
             "runReport",

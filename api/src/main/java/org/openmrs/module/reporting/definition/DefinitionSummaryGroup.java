@@ -13,6 +13,10 @@ public class DefinitionSummaryGroup {
     private List<DefinitionSummary> definitionSummaries = new ArrayList<DefinitionSummary>();
 
     
+    public List<DefinitionSummary> getDefinitionSummaries() {
+        return definitionSummaries;
+    }
+
     public DefinitionSummaryGroup(String groupName) {
        this.groupName = groupName;
     }
