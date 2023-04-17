@@ -26,6 +26,8 @@ public class ReportListPortletController extends ReportingPortletController {
 	protected void populateModel(HttpServletRequest request, Map<String, Object> model) {
 		super.populateModel(request, model);
 		String[] reportName;
+		String defaultGroupName ="Unknown Group";
+		String currentGroupName;
 		List<String> reportGroups = new ArrayList<String>();
 		List<DefinitionSummary> definitionSummaries = Context.getService(ReportDefinitionService.class)
 				.getAllDefinitionSummaries(false);
@@ -46,17 +48,18 @@ public class ReportListPortletController extends ReportingPortletController {
 			}
 
 			if (!foundGroup) {
-				group = new DefinitionSummaryGroup(definitionSummary.getName().split("-")[0]);
+				currentGroupName = definitionSummary.getName().split("-")[0];
+				group = new DefinitionSummaryGroup(currentGroupName.equals(" ") || currentGroupName.equals(null)?defaultGroupName:currentGroupName);
 				group.UpdateDefinitionSummary(definitionSummary);
 				definitionSummaryGroups.add(group);
 			}
 			reportName=definitionSummary.getName().split("-");
-
 			definitionSummary.setName(reportName.length>1?reportName[1]:reportName[0]);
 			foundGroup =false;
 		}
 
 		for (DefinitionSummaryGroup definitionSummaryGroup : definitionSummaryGroups) {
+
 			reportGroups.add(definitionSummaryGroup.getGroupName());
 			model.put(definitionSummaryGroup.getGroupName(), definitionSummaryGroup.getDefinitionSummaries());
 		}
